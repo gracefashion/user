@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1002571605434",
+    "project_id": "a1-online-learning-center",
+    "storage_bucket": "a1-online-learning-center.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002571605434:android:948d634c6ae07a750d2983",
+        "android_client_info": {
+          "package_name": "com.kzn.a1onlinelearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002571605434-obbcitmkhssg3pu4gpollpj8d6s13n0h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kzn.a1onlinelearning",
+            "certificate_hash": "16727ee184f84e424d41e321d3c3defe08e67480"
+          }
+        },
+        {
+          "client_id": "1002571605434-t6sl3irkba2hpa0rl8ch1c59g1olp5ee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsuJEvUYQ4QdaifajySarSln-cQ8XO5VA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002571605434-t6sl3irkba2hpa0rl8ch1c59g1olp5ee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
