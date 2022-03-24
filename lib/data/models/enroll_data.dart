@@ -10,6 +10,7 @@ class EnrollData {
   final String paymentAccName;
   final String bankSsImage;
   final String facebookProfileSsImage;
+  final DateTime? dateTime;
   EnrollData({
     required this.name,
     required this.phoneNumber,
@@ -17,6 +18,7 @@ class EnrollData {
     required this.paymentAccName,
     required this.bankSsImage,
     required this.facebookProfileSsImage,
+    this.dateTime,
   });
 
   factory EnrollData.fromJson(Map<String, dynamic> json) =>
@@ -30,6 +32,7 @@ class EnrollData {
     String? paymentAccName,
     String? bankSsImage,
     String? facebookProfileSsImage,
+    DateTime? dateTime,
   }) =>
       EnrollData(
         name: name ?? this.name,
@@ -39,5 +42,6 @@ class EnrollData {
         bankSsImage: bankSsImage ?? this.bankSsImage,
         facebookProfileSsImage:
             facebookProfileSsImage ?? this.facebookProfileSsImage,
+        dateTime: dateTime ?? this.dateTime,
       );
 }

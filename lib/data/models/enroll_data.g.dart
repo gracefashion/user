@@ -15,6 +15,9 @@ EnrollData _$EnrollDataFromJson(Map<String, dynamic> json) => EnrollData(
       paymentAccName: json['paymentAccName'] as String,
       bankSsImage: json['bankSsImage'] as String,
       facebookProfileSsImage: json['facebookProfileSsImage'] as String,
+      dateTime: json['dateTime'] == null
+          ? null
+          : DateTime.parse(json['dateTime'] as String),
     );
 
 Map<String, dynamic> _$EnrollDataToJson(EnrollData instance) =>
@@ -25,4 +28,5 @@ Map<String, dynamic> _$EnrollDataToJson(EnrollData instance) =>
       'paymentAccName': instance.paymentAccName,
       'bankSsImage': instance.bankSsImage,
       'facebookProfileSsImage': instance.facebookProfileSsImage,
+      'dateTime': instance.dateTime?.toIso8601String(),
     };
