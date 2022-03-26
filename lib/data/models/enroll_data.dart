@@ -6,17 +6,19 @@ part 'enroll_data.g.dart';
 class EnrollData {
   final String name;
   final String phoneNumber;
-  final List<String> courseNameList;
+  final List<Map<String, dynamic>> courseList;
   final String paymentAccName;
   final String bankSsImage;
   final String facebookProfileSsImage;
+  final int totalPrice;
   final DateTime? dateTime;
   EnrollData({
     required this.name,
     required this.phoneNumber,
-    required this.courseNameList,
+    required this.courseList,
     required this.paymentAccName,
     required this.bankSsImage,
+    required this.totalPrice,
     required this.facebookProfileSsImage,
     this.dateTime,
   });
@@ -28,20 +30,22 @@ class EnrollData {
   EnrollData copyWith({
     String? name,
     String? phoneNumber,
-    List<String>? courseNameList,
+    List<Map<String, dynamic>>? courseList,
     String? paymentAccName,
     String? bankSsImage,
     String? facebookProfileSsImage,
+    int? totalPrice,
     DateTime? dateTime,
   }) =>
       EnrollData(
         name: name ?? this.name,
         phoneNumber: phoneNumber ?? this.phoneNumber,
-        courseNameList: courseNameList ?? this.courseNameList,
+        courseList: courseList ?? this.courseList,
         paymentAccName: paymentAccName ?? this.paymentAccName,
         bankSsImage: bankSsImage ?? this.bankSsImage,
         facebookProfileSsImage:
             facebookProfileSsImage ?? this.facebookProfileSsImage,
+        totalPrice: totalPrice ?? this.totalPrice,
         dateTime: dateTime ?? this.dateTime,
       );
 }

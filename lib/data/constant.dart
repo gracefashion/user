@@ -45,7 +45,7 @@ const List<String> courseNameList = [
   "Ready - Made Corset & Bra Online Class",
   "Ready Made Advanced Online Class",
 ];
-List<CheckboxModel> courseList = [
+/*List<CheckboxModel> courseList = [
   CheckboxModel(
       courseTitle: "Ready To Wear Basic Outfit Batch 2", isSelected: false),
   CheckboxModel(
@@ -74,7 +74,7 @@ List<CheckboxModel> courseList = [
       courseTitle: "Ready - Made Corset & Bra Online Class", isSelected: false),
   CheckboxModel(
       courseTitle: "Ready Made Advanced Online Class", isSelected: false),
-];
+];*/
 
 final List<String> paymentAccList = [
   "09968610865 (KBZ Pay)",
@@ -94,11 +94,11 @@ const Map<String, dynamic> paymentAccMap = {
 const inputLabel = TextStyle(
   color: Colors.black,
   fontWeight: FontWeight.bold,
-  fontSize: 20,
+  fontSize: 16,
 );
 const courseLabel = TextStyle(
   color: Colors.black,
-  fontSize: 18,
+  fontSize: 16,
 );
 const formBorder = OutlineInputBorder(
   borderSide: BorderSide(
@@ -107,3 +107,4 @@ const formBorder = OutlineInputBorder(
 );
 
 const enrollCollection = "enrollCollection";
+const courseCollection = "courseCollection";

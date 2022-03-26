@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kzn/controller/enroll_controller.dart';
@@ -30,7 +31,9 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
     final size = MediaQuery.of(context).size;
     EnrollController controller = Get.find();
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0,
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         title: Text("Enroll Your Desire Courses",
@@ -39,188 +42,411 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                 fontSize: 16.0,
                 color: Colors.black)),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Form(
-          key: controller.formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //Name and Phone FormField
-                Text("Name", style: courseLabel),
-                const SizedBox(height: 10),
-                TextFormField(
-                  controller: controller.nameController,
-                  validator: controller.nameInputValidator,
-                  decoration: InputDecoration(
-                    hintText: "Name",
-                    border: formBorder,
-                  ),
-                ),
-                const SizedBox(height: 15),
-                Text("Phone Number", style: courseLabel),
-                const SizedBox(height: 10),
-                TextFormField(
-                  controller: controller.phoneController,
-                  keyboardType: TextInputType.phone,
-                  validator: controller.phoneInputValidator,
-                  decoration: InputDecoration(
-                    hintText: "Phone Number",
-                    border: formBorder,
-                  ),
-                ),
-                const SizedBox(height: 15),
-                //Course Multiple Checkbox
-                Text("တက်ရောက်လိုသော အတန်း", style: courseLabel),
-                Obx(() {
-                  final list = controller.checkboxModelList;
-                  return SizedBox(
-                    height: list.length * 30,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: list.length,
-                      itemBuilder: (context, index) {
-                        return SizedBox(
-                          height: 32,
-                          child: CheckboxListTile(
-                            controlAffinity: ListTileControlAffinity.leading,
-                            contentPadding: EdgeInsets.all(0),
-                            value: list[index].isSelected,
-                            onChanged: (val) =>
-                                controller.changeCheckboxValue(val!, index),
-                            title: Text(
-                              list[index].courseTitle,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: courseLabel,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                }),
-                const SizedBox(height: 15),
-                //Payment Options
-                Text("Payment (Acc Name : Yadanar Aung)", style: courseLabel),
-                const SizedBox(height: 10),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                  ),
-                  child: Obx(() {
-                    return DropdownButton<String>(
-                      underline: const SizedBox(),
-                      isExpanded: true,
-                      alignment: Alignment.center,
-                      value: controller.paymentAccValue.value,
-                      onChanged: (val) => controller.changePaymentAccValue(val),
-                      items: paymentAccList
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          onTap: () => controller.changePaymentAccValue(value),
-                          value: value,
-                          child: Padding(
-                              padding: EdgeInsets.only(left: 20),
-                              child: Text(value)),
-                        );
-                      }).toList(),
-                    );
-                  }),
-                ),
-                const SizedBox(height: 15),
-                //Bank ScreenShot
-                Text("Bank Screenshot", style: courseLabel),
-                const SizedBox(height: 5),
-                SizedBox(
-                    height: 50,
-                    child: Obx(() {
-                      return Row(children: [
-                        //OutlineButton to get Image
-                        OutlinedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.grey.shade300,
-                          ),
-                          onPressed: () => getBankScreenshot(controller),
-                          child: Text(
-                            "Choose Screenshot",
-                            style: courseLabel.copyWith(fontSize: 16),
-                          ),
+      body: Obx(() => controller.coursePriceList.isNotEmpty
+          ? Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Form(
+                key: controller.formKey,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //Name and Phone FormField
+                      Text("အမည်", style: courseLabel),
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        controller: controller.nameController,
+                        validator: controller.nameInputValidator,
+                        decoration: InputDecoration(
+                          hintText: "Name",
+                          border: formBorder,
                         ),
-                        const SizedBox(width: 5),
-                        Expanded(
-                          child: Text(
-                            controller.bankSs.isEmpty
-                                ? "No file chosen"
-                                : controller.bankSs.value,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        )
-                      ]);
-                    })),
-                const SizedBox(height: 15),
-                //Facebook Profile ScreenShot
-                Text("Facebook Account Profile Screenshot", style: courseLabel),
-                const SizedBox(height: 5),
-                SizedBox(
-                    height: 50,
-                    child: Obx(() {
-                      return Row(children: [
-                        //OutlineButton to get Image
-                        OutlinedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.grey.shade300,
-                          ),
-                          onPressed: () =>
-                              getFacebookProfileScreenshot(controller),
-                          child: Text(
-                            "Choose Screenshot",
-                            style: courseLabel.copyWith(fontSize: 16),
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                        Expanded(
-                          child: Text(
-                            controller.facebookProfileSs.isEmpty
-                                ? "No file chosen"
-                                : controller.facebookProfileSs.value,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        )
-                      ]);
-                    })),
-                const SizedBox(width: 15),
-                Obx(() => SizedBox(
-                      height: 50,
-                      width: size.width,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.black,
-                        ),
-                        onPressed: () => controller.isUploading.value
-                            ? null
-                            : controller.uploadEnroll().then((value) =>
-                                value ? Navigator.of(context).pop() : null),
-                        child: controller.isUploading.value
-                            ? SizedBox(
-                                height: 50,
-                                child: CircularProgressIndicator(
-                                  color: Colors.white,
-                                ))
-                            : Text("Enroll Now!",
-                                style:
-                                    inputLabel.copyWith(color: Colors.white)),
                       ),
-                    )),
-              ],
-            ),
-          ),
-        ),
-      ),
+                      const SizedBox(height: 15),
+                      Text("ဖုန်းနံပါတ်", style: courseLabel),
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        controller: controller.phoneController,
+                        keyboardType: TextInputType.phone,
+                        validator: controller.phoneInputValidator,
+                        decoration: InputDecoration(
+                          hintText: "Phone Number",
+                          border: formBorder,
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      //Course Multiple Checkbox
+                      Text("တက်ရောက်လိုသော အတန်းများကို ရွေးချယ်ပါ",
+                          style: courseLabel),
+                      Obx(() {
+                        final list = controller.coursePriceList;
+                        return SizedBox(
+                          height: list.length * 50,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: list.length,
+                            itemBuilder: (context, index) {
+                              return SizedBox(
+                                height: 50,
+                                child: CheckboxListTile(
+                                    controlAffinity:
+                                        ListTileControlAffinity.leading,
+                                    contentPadding: EdgeInsets.all(0),
+                                    value: list[index].isSelected,
+                                    onChanged: (val) => controller
+                                        .changeCheckboxValue(val!, index),
+                                    title: ListTile(
+                                      title: Text(
+                                        list[index].courseName,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: courseLabel,
+                                      ),
+                                      subtitle: Text(
+                                        "သင်တန်းကြေး: ${list[index].coursePrice}ကျပ်",
+                                      ),
+                                    )),
+                              );
+                            },
+                          ),
+                        );
+                      }),
+                      const SizedBox(height: 15),
+                      //Total Price
+                      Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Text(
+                            "စုစုပေါင်း: ${controller.totalPrice.value}ကျပ်",
+                          )),
+                      const SizedBox(height: 30),
+                      //Payment Options
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/kpay.png",
+                                width: 112,
+                                height: 63,
+                              ),
+                              SizedBox(height: 5),
+                            ],
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                " Yadanar Aung (KBZ Pay)",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  primary: Colors.black,
+                                  textStyle: const TextStyle(fontSize: 16),
+                                ),
+                                onPressed: () {
+                                  Clipboard.setData(new ClipboardData(
+                                          text: "09968610865"))
+                                      .then((_) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text(
+                                                "KBZ Pay Account နံပါတ် 099 686 108 65 ကို Copy ကူး လိုက်ပါပြီ")));
+                                  });
+                                },
+                                child: const Text('099 686 108 65'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/wavepay.jpeg",
+                                width: 112,
+                                height: 63,
+                              ),
+                              SizedBox(height: 5),
+                            ],
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                " 09269303500 (Wave Pay)",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  primary: Colors.black,
+                                  textStyle: const TextStyle(fontSize: 16),
+                                ),
+                                onPressed: () {
+                                  Clipboard.setData(new ClipboardData(
+                                          text: "09269303500"))
+                                      .then((_) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text(
+                                                "Wave Account နံပါတ် 09 269 3035 00 ကို Copy ကူး လိုက်ပါပြီ")));
+                                  });
+                                },
+                                child: const Text(
+                                  'Password - 303500 ထားပေးပါ',
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/aya.png",
+                                width: 112,
+                                height: 63,
+                              ),
+                              SizedBox(height: 5),
+                            ],
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                " Yadanar Aung (AYA Bank)",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  primary: Colors.black,
+                                  textStyle: const TextStyle(fontSize: 16),
+                                ),
+                                onPressed: () {
+                                  Clipboard.setData(new ClipboardData(
+                                          text: "20009228825"))
+                                      .then((_) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text(
+                                                "AYA Bank Account နံပါတ် 200 09 2288 25 ကို Copy ကူး လိုက်ပါပြီ")));
+                                  });
+                                },
+                                child: const Text('200 09 2288 25'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/cbbank.png",
+                                width: 112,
+                                height: 63,
+                              ),
+                              SizedBox(height: 5),
+                            ],
+                          ),
+                          SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                " Yadanar Aung (CB Bank)",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  primary: Colors.black,
+                                  textStyle: const TextStyle(fontSize: 16),
+                                ),
+                                onPressed: () {
+                                  Clipboard.setData(new ClipboardData(
+                                          text: "0010600100428507"))
+                                      .then((_) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text(
+                                                "CB Bank Account နံပါတ် 0010 6001 0042 8507 ကို Copy ကူး လိုက်ပါပြီ")));
+                                  });
+                                },
+                                child: const Text('0010 6001 0042 8507'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 15),
+                      //Bank ScreenShot
+                      Text("ငွေလွှဲခဲ့သော Bank Screenshot ကို ရွေးချယ်ပါ",
+                          style: courseLabel),
+                      const SizedBox(height: 5),
+                      SizedBox(
+                          height: 50,
+                          child: Obx(() {
+                            return Row(children: [
+                              //OutlineButton to get Image
+                              OutlinedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.grey.shade300,
+                                ),
+                                onPressed: () => getBankScreenshot(controller),
+                                child: Text(
+                                  "Choose Screenshot",
+                                  style: courseLabel.copyWith(fontSize: 16),
+                                ),
+                              ),
+                              const SizedBox(width: 5),
+                              Expanded(
+                                child: Text(
+                                  controller.bankSs.isEmpty
+                                      ? "No file chosen"
+                                      : controller.bankSs.value,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              )
+                            ]);
+                          })),
+                      SizedBox(height: 15),
+
+                      Text("ငွေလွှဲခဲ့သော Bank Account ကို ရွေးချယ်ပါ",
+                          style: courseLabel),
+                      const SizedBox(height: 10),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: Obx(() {
+                          return DropdownButton<String>(
+                            underline: const SizedBox(),
+                            isExpanded: true,
+                            alignment: Alignment.center,
+                            value: controller.paymentAccValue.value,
+                            onChanged: (val) =>
+                                controller.changePaymentAccValue(val),
+                            items: paymentAccList
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                onTap: () =>
+                                    controller.changePaymentAccValue(value),
+                                value: value,
+                                child: Padding(
+                                    padding: EdgeInsets.only(left: 20),
+                                    child: Text(value)),
+                              );
+                            }).toList(),
+                          );
+                        }),
+                      ),
+
+                      const SizedBox(height: 30),
+                      //Facebook Profile ScreenShot
+                      Text("Facebook Account Profile Screenshot",
+                          style: courseLabel),
+                      const SizedBox(height: 5),
+                      SizedBox(
+                          height: 50,
+                          child: Obx(() {
+                            return Row(children: [
+                              //OutlineButton to get Image
+                              OutlinedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.grey.shade300,
+                                ),
+                                onPressed: () =>
+                                    getFacebookProfileScreenshot(controller),
+                                child: Text(
+                                  "Choose Screenshot",
+                                  style: courseLabel.copyWith(fontSize: 16),
+                                ),
+                              ),
+                              const SizedBox(width: 5),
+                              Expanded(
+                                child: Text(
+                                  controller.facebookProfileSs.isEmpty
+                                      ? "No file chosen"
+                                      : controller.facebookProfileSs.value,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              )
+                            ]);
+                          })),
+
+                      SizedBox(height: 15),
+
+                      const SizedBox(width: 15),
+                      Obx(() => SizedBox(
+                            height: 50,
+                            width: size.width,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.black,
+                              ),
+                              onPressed: () => controller.isUploading.value
+                                  ? null
+                                  : controller.uploadEnroll().then((value) =>
+                                      value
+                                          ? Navigator.of(context).pop()
+                                          : null),
+                              child: controller.isUploading.value
+                                  ? SizedBox(
+                                      height: 50,
+                                      child: CircularProgressIndicator(
+                                        color: Colors.white,
+                                      ))
+                                  : Text("အတန်းအပ်မည်",
+                                      style: inputLabel.copyWith(
+                                          color: Colors.white)),
+                            ),
+                          )),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          : Center(
+              child: const SizedBox(
+                height: 50,
+                width: 50,
+                child: CircularProgressIndicator(),
+              ),
+            )),
     );
   }
 

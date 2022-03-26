@@ -6,11 +6,12 @@ import 'package:kzn/data/constant.dart';
 import 'package:kzn/data/models/checkbox_model.dart';
 import 'package:kzn/data/models/enroll_data.dart';
 
+import '../data/models/course_price.dart';
 import 'main_controller.dart';
 
 class EnrollController extends GetxController {
   MainController controller = Get.find();
-  RxList<CheckboxModel> checkboxModelList = <CheckboxModel>[].obs;
+  RxList<CoursePrice> coursePriceList = <CoursePrice>[].obs;
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
@@ -18,23 +19,28 @@ class EnrollController extends GetxController {
   var bankSs = "".obs;
   var facebookProfileSs = "".obs;
   var isUploading = false.obs;
+  var totalPrice = 0.obs;
 
   @override
-  void onInit() {
-    checkboxModelList.value = courseList.map((element) {
-      if (element.isSelected) {
-        return element.copyWith(isSelected: false);
-      } else {
-        return element;
-      }
-    }).toList();
+  void onInit() async {
+    coursePriceList.value = await controller.database.getCoursePriceList();
     super.onInit();
   }
 
   void changeCheckboxValue(bool value, int index) {
-    checkboxModelList[index] = checkboxModelList[index].copyWith(
+    coursePriceList[index] = coursePriceList[index].copyWith(
       isSelected: value,
     );
+    changeTotalPrice();
+  }
+
+  void changeTotalPrice() {
+    totalPrice.value = 0;
+    final allTrueList =
+        coursePriceList.where((element) => element.isSelected == true);
+    allTrueList.forEach((element) {
+      totalPrice.value += element.coursePrice;
+    });
   }
 
   void changePaymentAccValue(String? inputValue) {
@@ -72,23 +78,28 @@ class EnrollController extends GetxController {
 
   Future<bool> uploadEnroll() async {
     Completer<bool> _completer = Completer();
-    final List<CheckboxModel> courseList =
-        checkboxModelList.where((model) => model.isSelected == true).toList();
-    final List<String> courseStringList =
-        courseList.map((e) => e.courseTitle).toList();
+    final List<CoursePrice> courseList =
+        coursePriceList.where((model) => model.isSelected == true).toList();
+    final List<Map<String, dynamic>> courseMapList = courseList
+        .map((e) => <String, dynamic>{
+              "name": e.courseName,
+              "price": e.coursePrice,
+            })
+        .toList(); //List Map Stirng keys=> courseName and price
     if (formKey.currentState?.validate() == true &&
         paymentAccValue.isNotEmpty &&
         bankSs.isNotEmpty &&
         facebookProfileSs.isNotEmpty &&
-        courseStringList.isNotEmpty) {
+        courseMapList.isNotEmpty) {
       isUploading.value = true;
       final enrollData = EnrollData(
         name: nameController.text,
         phoneNumber: phoneController.text,
-        courseNameList: courseStringList,
+        courseList: courseMapList,
         paymentAccName: paymentAccValue.value,
         bankSsImage: bankSs.value,
         facebookProfileSsImage: facebookProfileSs.value,
+        totalPrice: totalPrice.value,
       );
       await controller.database
           .uploadEnrollData(

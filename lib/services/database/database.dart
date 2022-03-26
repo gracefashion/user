@@ -9,9 +9,27 @@ import 'package:kzn/data/models/enroll_data.dart';
 import 'package:kzn/services/api/send_notification.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../data/models/course_price.dart';
+
 class Database {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;
+
+  Future<List<CoursePrice>> getCoursePriceList() async {
+    return _firestore
+        .collection(courseCollection)
+        .orderBy("dateTime", descending: true)
+        .withConverter(
+          fromFirestore: (snapshot, _) =>
+              CoursePrice.fromJson(snapshot.data()!),
+          toFirestore: (coursePrice, _) {
+            final course = coursePrice as CoursePrice;
+            return course.toJson();
+          },
+        )
+        .get()
+        .then((value) => value.docs.map((e) => e.data()).toList());
+  }
 
   Future<bool> uploadEnrollData(EnrollData enrollData) async {
     Completer<bool> _completer = Completer();

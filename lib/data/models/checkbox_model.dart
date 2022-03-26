@@ -1,7 +1,8 @@
-class CheckboxModel{
+/*class CheckboxModel{
   String courseTitle;
+  int price;
   bool isSelected;
-  CheckboxModel({required this.courseTitle,required this.isSelected});
+  CheckboxModel({required this.courseTitle,required this.price,required this.isSelected});
 
   CheckboxModel copyWith({
     String? courseTitle,
@@ -10,4 +11,4 @@ class CheckboxModel{
     courseTitle: courseTitle ?? this.courseTitle, 
     isSelected: isSelected ?? this.isSelected,
     );
-}
+}*/

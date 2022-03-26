@@ -9,11 +9,12 @@ part of 'enroll_data.dart';
 EnrollData _$EnrollDataFromJson(Map<String, dynamic> json) => EnrollData(
       name: json['name'] as String,
       phoneNumber: json['phoneNumber'] as String,
-      courseNameList: (json['courseNameList'] as List<dynamic>)
-          .map((e) => e as String)
+      courseList: (json['courseList'] as List<dynamic>)
+          .map((e) => e as Map<String, dynamic>)
           .toList(),
       paymentAccName: json['paymentAccName'] as String,
       bankSsImage: json['bankSsImage'] as String,
+      totalPrice: json['totalPrice'] as int,
       facebookProfileSsImage: json['facebookProfileSsImage'] as String,
       dateTime: json['dateTime'] == null
           ? null
@@ -24,9 +25,10 @@ Map<String, dynamic> _$EnrollDataToJson(EnrollData instance) =>
     <String, dynamic>{
       'name': instance.name,
       'phoneNumber': instance.phoneNumber,
-      'courseNameList': instance.courseNameList,
+      'courseList': instance.courseList,
       'paymentAccName': instance.paymentAccName,
       'bankSsImage': instance.bankSsImage,
       'facebookProfileSsImage': instance.facebookProfileSsImage,
+      'totalPrice': instance.totalPrice,
       'dateTime': instance.dateTime?.toIso8601String(),
     };
