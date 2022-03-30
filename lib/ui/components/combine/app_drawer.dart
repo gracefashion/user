@@ -61,7 +61,7 @@ class AppDrawer extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 8, left: 8, right: 8, bottom: 12),
             child: ListTile(
-              leading: Icon(Icons.group, color: Colors.black),
+              leading: Icon(Icons.article, color: Colors.black),
               title: Text('About', style: TextStyle(color: Colors.black),),
               onTap: () {
                 // Update the state of the app
@@ -78,8 +78,8 @@ class AppDrawer extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 12, left: 8, right: 8),
             child: ListTile(
-              leading: Icon(Icons.logout, color: Colors.black),
-              title: Text('Logout', style: TextStyle(color: Colors.black)),
+              leading: Icon(Icons.person, color: Colors.black),
+              title: Text('Login / Logout', style: TextStyle(color: Colors.black)),
               onTap: () {
                 // Update the state of the app
                 // ...

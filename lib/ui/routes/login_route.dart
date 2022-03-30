@@ -39,7 +39,6 @@ class _LoginRouteState extends State<LoginRoute>
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
@@ -147,22 +146,7 @@ class _LoginRouteState extends State<LoginRoute>
                   child: Builder(
                     builder: (context) => InkWell(
                       onTap: () {
-                        print('login onTap');
-                        // validate username and password
-                        //if(this.username == null || username = "" || password == null || password = ""){
-
-                        //}
-                        if (username == "" ||
-                            password == "" ||
-                            username == null ||
-                            password == null) {
-                          print('invalid input value');
-                          return;
-                        }
-                        loginAccount(
-                            username: username!,
-                            password: password!,
-                            context: context);
+                        //
                       },
                       child: Container(
                         width: size.width * 0.8,
@@ -175,7 +159,20 @@ class _LoginRouteState extends State<LoginRoute>
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: MaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            debugPrint('************login onTap*******');
+                            if (username == "" ||
+                                password == "" ||
+                                username == null ||
+                                password == null) {
+                              print('invalid input value');
+                              return;
+                            }
+                            loginAccount(
+                                username: username!,
+                                password: password!,
+                                context: context);
+                          },
                           child: Text(
                             'Login',
                             style: TextStyle(

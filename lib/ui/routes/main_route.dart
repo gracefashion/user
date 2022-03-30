@@ -50,22 +50,21 @@ class _MainRouteState extends State<MainRoute> {
             title: Text("A 1 Online Learning Center",
                 style: TextStyle(fontSize: 16.0, color: Colors.black)),
             actions: [
-              Container(
-                margin: EdgeInsets.only(
-                  top: 7,
-                  bottom: 10,
-                  right: 7,
-                ),
-                width: 40,
+              SizedBox(
+                width: 55,
                 child: ElevatedButton(
                   style: ButtonStyle(
                     alignment: Alignment.center,
-                    padding: MaterialStateProperty.all(EdgeInsets.all(0)),
                     backgroundColor: MaterialStateProperty.all(Colors.white),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(80),
-                    )),
-                    overlayColor: MaterialStateProperty.all(Colors.black12),
+                    elevation: MaterialStateProperty.resolveWith<double>(
+                      // As you said you dont need elevation. I'm returning 0 in both case
+                          (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.disabled)) {
+                          return 0;
+                        }
+                        return 0; // Defer to the widget's default.
+                      },
+                    ),
                   ),
                   onPressed: () {
                     //Navigator.pushNamed(context, OTPScreen.routeName);
@@ -73,28 +72,29 @@ class _MainRouteState extends State<MainRoute> {
                     OpenFacebook.open(fbProtocolUrl, fallbackUrl);
                   },
                   child: FaIcon(
-                    FontAwesomeIcons.facebook,
+                    FontAwesomeIcons.facebookSquare,
                     color: Colors.indigo,
-                    size: 20,
+                    size: 30,
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(
-                  top: 7,
-                  bottom: 10,
-                  right: 7,
-                ),
-                width: 40,
+
+
+              SizedBox(
+                width: 55,
                 child: ElevatedButton(
                   style: ButtonStyle(
                     alignment: Alignment.center,
-                    padding: MaterialStateProperty.all(EdgeInsets.all(0)),
                     backgroundColor: MaterialStateProperty.all(Colors.white),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(80),
-                    )),
-                    overlayColor: MaterialStateProperty.all(Colors.black12),
+                    elevation: MaterialStateProperty.resolveWith<double>(
+                      // As you said you dont need elevation. I'm returning 0 in both case
+                          (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.disabled)) {
+                          return 0;
+                        }
+                        return 0; // Defer to the widget's default.
+                      },
+                    ),
                   ),
                   onPressed: () async {
                     try {
@@ -106,44 +106,10 @@ class _MainRouteState extends State<MainRoute> {
                   child: FaIcon(
                     FontAwesomeIcons.facebookMessenger,
                     color: Colors.indigo,
-                    size: 20,
+                    size: 27,
                   ),
                 ),
               ),
-
-              //   Container(
-              //     margin: EdgeInsets.only(
-              //       top: 7,
-              //       bottom: 10,
-              //       right: 7,
-              //     ),
-              //     width: 40,
-              //     child: ElevatedButton(
-              //       style: ButtonStyle(
-              //         alignment: Alignment.center,
-              //         padding: MaterialStateProperty.all(EdgeInsets.all(0)),
-              //         backgroundColor: MaterialStateProperty.all(Colors.white),
-              //         shape: MaterialStateProperty.all(RoundedRectangleBorder(
-              //           borderRadius: BorderRadius.circular(80),
-              //         )),
-              //         overlayColor: MaterialStateProperty.all(Colors.black12),
-              //       ),
-              //       onPressed: () async {
-              //         {Navigator.push(
-              //           context,
-              //           MaterialPageRoute(
-              //               builder: (context) => Blog()),
-              //         );
-              //         }
-              //       },
-              //       child: FaIcon(
-              //         FontAwesomeIcons.bloggerB,
-              //         color: Colors.indigo,
-              //         size: 20,
-              //       ),
-              //     ),
-              //   ),
-              //
             ]),
 
         body: ListView(

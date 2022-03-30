@@ -34,7 +34,7 @@ class _LessonVideoPlayerState extends State<LessonVideoPlayer> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 20),
-      height: 235,
+      height: 225,
       child: _videoPlayerFuture(),
     );
   }
@@ -76,9 +76,8 @@ class _LessonVideoPlayerState extends State<LessonVideoPlayer> {
   }
 
   Widget _videoPlayer(){
-    return Container(
-      //aspectRatio: 16 / 9,
-      //height: MediaQuery.of(context).size.height,
+    return AspectRatio(
+      aspectRatio: 16 / 9,
       child: BetterPlayer(
         controller: _betterPlayerController,
       ),

@@ -16,6 +16,7 @@ class _CourseRouteState extends State<CourseRoute> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           iconTheme: IconThemeData(color: Colors.black),
           backgroundColor: Colors.white,
           title: Text(Provider.of<CourseProvider>(context,listen:true).course!.name, style: TextStyle(fontSize: 14.0,

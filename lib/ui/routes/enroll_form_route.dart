@@ -53,7 +53,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                     children: [
                       //Name and Phone FormField
                       Text("အမည်", style: courseLabel),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 5),
                       TextFormField(
                         controller: controller.nameController,
                         validator: controller.nameInputValidator,
@@ -64,7 +64,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                       ),
                       const SizedBox(height: 15),
                       Text("ဖုန်းနံပါတ်", style: courseLabel),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 5),
                       TextFormField(
                         controller: controller.phoneController,
                         keyboardType: TextInputType.phone,
@@ -104,7 +104,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                                         style: courseLabel,
                                       ),
                                       subtitle: Text(
-                                        "သင်တန်းကြေး: ${list[index].coursePrice}ကျပ်",
+                                        "သင်တန်းကြေး: ${list[index].coursePrice} ကျပ်",
                                       ),
                                     )),
                               );
@@ -117,7 +117,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                       Align(
                           alignment: Alignment.bottomLeft,
                           child: Text(
-                            "စုစုပေါင်း: ${controller.totalPrice.value}ကျပ်",
+                            "ငွေလွှဲရမည့် စုစုပေါင်း သင်တန်းကြေးမှာ  ${controller.totalPrice.value} ကျပ် ဖြစ်ပါတယ်",
                           )),
                       const SizedBox(height: 30),
                       //Payment Options

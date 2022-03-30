@@ -19,5 +19,6 @@ Future<void> sendPush(String title, String message) async {
       options: Options(headers: {
         "Authorization": "key=$fcmKey",
         "Content-Type": "application/json"
-      }));
+      })
+  );
 }
