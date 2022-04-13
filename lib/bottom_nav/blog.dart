@@ -38,13 +38,17 @@ class _BlogState extends State<Blog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 3,
         iconTheme: const IconThemeData(color: Colors.indigo),
         backgroundColor: Colors.white,
         title: Center(
           child: Text("A 1 Fashion Knowledge Blog", style: TextStyle(fontWeight: FontWeight.w700,
               fontSize: 16.0,
-              color: Colors.black
+              color: Colors.black,
+            letterSpacing: 1,
+            wordSpacing: 2,
           )),
         ),
       ),
@@ -107,7 +111,7 @@ class _PostTileState extends State<PostTile> {
         )));
       },
       child: Card(
-        elevation: 5,
+        elevation: 1,
         // height: 150,
         margin: EdgeInsets.only(top: 8),
         // padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -118,11 +122,14 @@ class _PostTileState extends State<PostTile> {
               padding: const EdgeInsets.all(8.0),
               child: Hero(
                 tag: widget.imageUrl,
-                child: Image.network(widget.imageUrl,
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.cover
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(widget.imageUrl,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover
 
+                  ),
                 ),
               ),
             ),

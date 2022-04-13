@@ -5,6 +5,9 @@ import 'package:kzn/ui/routes/login_route.dart';
 import 'package:kzn/ui/routes/privacy-policy.dart';
 import 'package:kzn/ui/routes/tnc_route.dart';
 
+import '../../../data/constant.dart';
+import '../../../utils/open_facebook.dart';
+
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -59,7 +62,7 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 8, left: 8, right: 8, bottom: 12),
+            margin: EdgeInsets.all(8),
             child: ListTile(
               leading: Icon(Icons.article, color: Colors.black),
               title: Text('About', style: TextStyle(color: Colors.black),),
@@ -73,19 +76,13 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
 
-          Divider(),
-
           Container(
-            margin: EdgeInsets.only(top: 12, left: 8, right: 8),
+            margin: EdgeInsets.all(8),
             child: ListTile(
-              leading: Icon(Icons.person, color: Colors.black),
-              title: Text('Login / Logout', style: TextStyle(color: Colors.black)),
+              leading: Icon(Icons.facebook, color: Colors.blue),
+              title: Text('A 1 Facebook Page', style: TextStyle(color: Colors.black)),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-                Navigator.pushReplacementNamed(context, LoginRoute.routeName);
+                OpenFacebook.open(fbProtocolUrl, fallbackUrl);
               },
             ),
           ),

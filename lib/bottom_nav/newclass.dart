@@ -38,12 +38,15 @@
    Widget build(BuildContext context) {
      return Scaffold(
        appBar: AppBar(
+         elevation: 2,
          iconTheme: const IconThemeData(color: Colors.indigo),
          backgroundColor: Colors.white,
          title: Center(
            child: Text("A 1 New Coming Classes", style: TextStyle(fontWeight: FontWeight.w700,
                fontSize: 16.0,
-               color: Colors.black
+               color: Colors.black,
+             letterSpacing: 1,
+             wordSpacing: 1,
            )),
          ),
        ),
@@ -108,20 +111,23 @@
          )));
        },
        child: Card(
-         elevation: 5,
+         elevation: 1,
          
          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
            children: [
              Padding(
-               padding: const EdgeInsets.all(8.0),
+               padding: const EdgeInsets.all(10),
                child: Hero(
                  tag: widget.imageUrl,
-                 child: Image.network(widget.imageUrl,
-                     width: 100,
-                     height: 100,
-                     fit: BoxFit.cover
+                 child: ClipRRect(
+                   borderRadius: BorderRadius.circular(10),
+                   child: Image.network(widget.imageUrl,
+                       width: 100,
+                       height: 100,
+                       fit: BoxFit.cover
 
+                   ),
                  ),
                ),
              ),
@@ -129,13 +135,16 @@
              SizedBox(width: 8),
 
              Expanded(child:
-             Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: [Text(widget.title,
-                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)
-               ),
-                 shortDescritionView(),
-               ],)),
+             Padding(
+               padding: const EdgeInsets.only(top: 20),
+               child: Column(
+                 children: [
+                   Text(widget.title,
+                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)
+                 ),
+                   shortDescritionView(),
+                 ],),
+             )),
              SizedBox(width: 5),
 
            ],

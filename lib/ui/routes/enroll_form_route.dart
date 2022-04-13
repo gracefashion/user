@@ -36,7 +36,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
-        title: Text("Enroll Your Desire Courses",
+        title: Text("သင်တန်း အပ်ရန်",
             style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 16.0,

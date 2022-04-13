@@ -44,44 +44,47 @@ class _MainRouteState extends State<MainRoute> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
+          elevation: 0,
             iconTheme: IconThemeData(color: Colors.black),
             backgroundColor: Colors.white,
             title: Text("A 1 Online Learning Center",
-                style: TextStyle(fontSize: 16.0, color: Colors.black)),
+
+                style: TextStyle(fontSize: 16.0, color: Colors.black,
+                  letterSpacing: 1,
+                  wordSpacing: 2,
+                )),
             actions: [
-              SizedBox(
-                width: 55,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.center,
-                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                    elevation: MaterialStateProperty.resolveWith<double>(
-                      // As you said you dont need elevation. I'm returning 0 in both case
-                          (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.disabled)) {
-                          return 0;
-                        }
-                        return 0; // Defer to the widget's default.
-                      },
-                    ),
-                  ),
-                  onPressed: () {
-                    //Navigator.pushNamed(context, OTPScreen.routeName);
-                    // print("Contact to Admin onPressed");
-                    OpenFacebook.open(fbProtocolUrl, fallbackUrl);
-                  },
-                  child: FaIcon(
-                    FontAwesomeIcons.facebookSquare,
-                    color: Colors.indigo,
-                    size: 30,
-                  ),
-                ),
-              ),
+              // SizedBox(
+              //   width: 50,
+              //   child: ElevatedButton(
+              //     style: ButtonStyle(
+              //       alignment: Alignment.center,
+              //       backgroundColor: MaterialStateProperty.all(Colors.white),
+              //       elevation: MaterialStateProperty.resolveWith<double>(
+              //         // As you said you dont need elevation. I'm returning 0 in both case
+              //             (Set<MaterialState> states) {
+              //           if (states.contains(MaterialState.disabled)) {
+              //             return 0;
+              //           }
+              //           return 0; // Defer to the widget's default.
+              //         },
+              //       ),
+              //     ),
+              //     onPressed: () {
+              //       OpenFacebook.open(fbProtocolUrl, fallbackUrl);
+              //     },
+              //     child: FaIcon(
+              //       FontAwesomeIcons.facebookSquare,
+              //       color: Colors.indigo,
+              //       size: 30,
+              //     ),
+              //   ),
+              // ),
 
 
               SizedBox(
-                width: 55,
                 child: ElevatedButton(
                   style: ButtonStyle(
                     alignment: Alignment.center,
@@ -105,8 +108,8 @@ class _MainRouteState extends State<MainRoute> {
                   },
                   child: FaIcon(
                     FontAwesomeIcons.facebookMessenger,
-                    color: Colors.indigo,
-                    size: 27,
+                    color: Colors.blue,
+                    size: 23,
                   ),
                 ),
               ),

@@ -39,6 +39,9 @@ class _LoginRouteState extends State<LoginRoute>
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: BackButton(
+            color: Colors.black
+        ),
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
@@ -57,7 +60,7 @@ class _LoginRouteState extends State<LoginRoute>
                     child: Padding(
                       padding: const EdgeInsets.only(top: 10, bottom: 40),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(10),
                         child: Image(
                           image: AssetImage('assets/images/appicon.png'),
                           fit: BoxFit.fitHeight,

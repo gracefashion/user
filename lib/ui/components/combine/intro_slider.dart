@@ -17,19 +17,16 @@ class IntroSlider extends StatelessWidget {
       //color: Colors.blueAccent,
       child: CarouselSlider(
           options: CarouselOptions(
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enlargeCenterPage: true,
             autoPlay: true,
             initialPage: 2,
-            height: 28.125 * 6.5,
+            height: 28.125 * 8,
             enableInfiniteScroll: true,
           ),
           items: List.generate(photos.length, (index) => Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              width: 450,
-              decoration: BoxDecoration(
-                  border: Border.all(width: 1.0),
-                  borderRadius: BorderRadius.circular(8.0)
-              ),
               child: IntroSliderItem(photo:photos[index]),
             ),
           ))

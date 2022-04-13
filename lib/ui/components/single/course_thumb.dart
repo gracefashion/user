@@ -21,25 +21,28 @@ class CourseThumb extends StatelessWidget {
       child: Container(
         height: 200,
         // padding: EdgeInsets.all(8.0),
-        margin: EdgeInsets.all(8.0),
+        // margin: EdgeInsets.all(8.0),
         // color: Colors.yellow,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            CourseThumbImg(course: course,),
-            // Align(
-            //   alignment: Alignment.bottomCenter,
-            //   child: Container(
-            //     width: double.infinity,
-                // color: Color.fromRGBO(38, 38, 38, 0.4),
-                // padding: EdgeInsets.all(8.0),
-                // margin: EdgeInsets.all(0.0),
+        child: Padding(
+          padding: const EdgeInsets.all(0),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              CourseThumbImg(course: course,),
+              // Align(
+              //   alignment: Alignment.bottomCenter,
+              //   child: Container(
+              //     width: double.infinity,
+                  // color: Color.fromRGBO(38, 38, 38, 0.4),
+                  // padding: EdgeInsets.all(8.0),
+                  // margin: EdgeInsets.all(0.0),
 
-                // child: Text(course.name,
-                //   style: TextStyle(color: Colors.white, fontSize: 24),),
+                  // child: Text(course.name,
+                  //   style: TextStyle(color: Colors.white, fontSize: 24),),
+                // ),
               // ),
-            // ),
-          ],
+            ],
+          ),
         ),
       ),
     );
