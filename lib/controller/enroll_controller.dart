@@ -37,7 +37,7 @@ class EnrollController extends GetxController {
   void changeTotalPrice() {
     totalPrice.value = 0;
     final allTrueList =
-        coursePriceList.where((element) => element.isSelected == true);
+    coursePriceList.where((element) => element.isSelected == true);
     allTrueList.forEach((element) {
       totalPrice.value += element.coursePrice;
     });
@@ -79,12 +79,12 @@ class EnrollController extends GetxController {
   Future<bool> uploadEnroll() async {
     Completer<bool> _completer = Completer();
     final List<CoursePrice> courseList =
-        coursePriceList.where((model) => model.isSelected == true).toList();
+    coursePriceList.where((model) => model.isSelected == true).toList();
     final List<Map<String, dynamic>> courseMapList = courseList
         .map((e) => <String, dynamic>{
-              "name": e.courseName,
-              "price": e.coursePrice,
-            })
+      "name": e.courseName,
+      "price": e.coursePrice,
+    })
         .toList(); //List Map Stirng keys=> courseName and price
     if (formKey.currentState?.validate() == true &&
         paymentAccValue.isNotEmpty &&

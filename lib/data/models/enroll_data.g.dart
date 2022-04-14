@@ -19,16 +19,16 @@ EnrollData _$EnrollDataFromJson(Map<String, dynamic> json) => EnrollData(
       dateTime: json['dateTime'] == null
           ? null
           : DateTime.parse(json['dateTime'] as String),
-    );
+);
 
 Map<String, dynamic> _$EnrollDataToJson(EnrollData instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'phoneNumber': instance.phoneNumber,
-      'courseList': instance.courseList,
-      'paymentAccName': instance.paymentAccName,
-      'bankSsImage': instance.bankSsImage,
-      'facebookProfileSsImage': instance.facebookProfileSsImage,
-      'totalPrice': instance.totalPrice,
-      'dateTime': instance.dateTime?.toIso8601String(),
+          'name': instance.name,
+          'phoneNumber': instance.phoneNumber,
+          'courseList': instance.courseList,
+          'paymentAccName': instance.paymentAccName,
+          'bankSsImage': instance.bankSsImage,
+          'facebookProfileSsImage': instance.facebookProfileSsImage,
+          'totalPrice': instance.totalPrice,
+          'dateTime': instance.dateTime?.toIso8601String(),
     };

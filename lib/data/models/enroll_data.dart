@@ -44,7 +44,7 @@ class EnrollData {
         paymentAccName: paymentAccName ?? this.paymentAccName,
         bankSsImage: bankSsImage ?? this.bankSsImage,
         facebookProfileSsImage:
-            facebookProfileSsImage ?? this.facebookProfileSsImage,
+        facebookProfileSsImage ?? this.facebookProfileSsImage,
         totalPrice: totalPrice ?? this.totalPrice,
         dateTime: dateTime ?? this.dateTime,
       );

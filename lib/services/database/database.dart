@@ -20,13 +20,13 @@ class Database {
         .collection(courseCollection)
         .orderBy("dateTime", descending: true)
         .withConverter(
-          fromFirestore: (snapshot, _) =>
-              CoursePrice.fromJson(snapshot.data()!),
-          toFirestore: (coursePrice, _) {
-            final course = coursePrice as CoursePrice;
-            return course.toJson();
-          },
-        )
+      fromFirestore: (snapshot, _) =>
+          CoursePrice.fromJson(snapshot.data()!),
+      toFirestore: (coursePrice, _) {
+        final course = coursePrice as CoursePrice;
+        return course.toJson();
+      },
+    )
         .get()
         .then((value) => value.docs.map((e) => e.data()).toList());
   }
@@ -51,8 +51,8 @@ class Database {
                 '*********************Uploaded ${snapshot.bytesTransferred} bytes.');
             await snapshot.ref.getDownloadURL().then((value) => index == 0
                 ? jsonData = jsonData.copyWith(
-                    bankSsImage: value,
-                  )
+              bankSsImage: value,
+            )
                 : jsonData = jsonData.copyWith(facebookProfileSsImage: value));
           });
         })).then((value) async {
@@ -65,7 +65,7 @@ class Database {
             _completer.complete(true);
             try {
               await sendPush("အတန်းအပ်ခြင်း", "နာမည်-${jsonData.name}").then(
-                  (value) =>
+                      (value) =>
                       print("****************Push Send Success********"));
             } catch (e) {
               debugPrint("******************sendPushError: $e*********");

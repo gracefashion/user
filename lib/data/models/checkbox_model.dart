@@ -3,7 +3,6 @@
   int price;
   bool isSelected;
   CheckboxModel({required this.courseTitle,required this.price,required this.isSelected});
-
   CheckboxModel copyWith({
     String? courseTitle,
     bool? isSelected,

@@ -39,9 +39,7 @@ class _LoginRouteState extends State<LoginRoute>
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: BackButton(
-            color: Colors.black
-        ),
+
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
@@ -60,7 +58,7 @@ class _LoginRouteState extends State<LoginRoute>
                     child: Padding(
                       padding: const EdgeInsets.only(top: 10, bottom: 40),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(20),
                         child: Image(
                           image: AssetImage('assets/images/appicon.png'),
                           fit: BoxFit.fitHeight,
@@ -79,8 +77,8 @@ class _LoginRouteState extends State<LoginRoute>
                   padding: EdgeInsets.only(left: 24, right: 24, bottom: 24),
                   child: Container(
                     decoration: BoxDecoration(
-                        //border: Border.all(color: Colors.white)
-                        ),
+                      //border: Border.all(color: Colors.white)
+                    ),
                     child: TextField(
                       onChanged: (String str) {
                         setState(() {
@@ -91,14 +89,14 @@ class _LoginRouteState extends State<LoginRoute>
                       decoration: InputDecoration(
                         //border: OutlineInputBorder(),
                         enabledBorder: OutlineInputBorder(
-                            //borderSide: const BorderSide(color: Colors.white)
-                            ),
+                          //borderSide: const BorderSide(color: Colors.white)
+                        ),
                         focusedBorder: OutlineInputBorder(
-                            //borderSide: const BorderSide(color: Colors.white)
-                            ),
+                          //borderSide: const BorderSide(color: Colors.white)
+                        ),
                         disabledBorder: OutlineInputBorder(
-                            //borderSide: const BorderSide(color: Colors.red)
-                            ),
+                          //borderSide: const BorderSide(color: Colors.red)
+                        ),
                         hintText: 'Enter username',
                         labelText: 'Username',
                         //hintStyle: TextStyle(color: Colors.white),
@@ -113,8 +111,8 @@ class _LoginRouteState extends State<LoginRoute>
                   padding: EdgeInsets.all(24),
                   child: Container(
                     decoration: BoxDecoration(
-                        //border: Border.all(color: Colors.white)
-                        ),
+                      //border: Border.all(color: Colors.white)
+                    ),
                     child: TextField(
                       obscureText: true,
                       onChanged: (String str) {
@@ -126,14 +124,14 @@ class _LoginRouteState extends State<LoginRoute>
                       decoration: InputDecoration(
                         //border: OutlineInputBorder(),
                         enabledBorder: OutlineInputBorder(
-                            //borderSide: const BorderSide(color: Colors.white)
-                            ),
+                          //borderSide: const BorderSide(color: Colors.white)
+                        ),
                         focusedBorder: OutlineInputBorder(
-                            //borderSide: const BorderSide(color: Colors.white)
-                            ),
+                          //borderSide: const BorderSide(color: Colors.white)
+                        ),
                         disabledBorder: OutlineInputBorder(
-                            //borderSide: const BorderSide(color: Colors.red)
-                            ),
+                          //borderSide: const BorderSide(color: Colors.red)
+                        ),
                         hintText: '****',
                         labelText: 'Password',
                         //hintStyle: TextStyle(color: Colors.white),
@@ -149,7 +147,22 @@ class _LoginRouteState extends State<LoginRoute>
                   child: Builder(
                     builder: (context) => InkWell(
                       onTap: () {
-                        //
+                        print('login onTap');
+                        // validate username and password
+                        //if(this.username == null || username = "" || password == null || password = ""){
+
+                        //}
+                        if (username == "" ||
+                            password == "" ||
+                            username == null ||
+                            password == null) {
+                          print('invalid input value');
+                          return;
+                        }
+                        loginAccount(
+                            username: username!,
+                            password: password!,
+                            context: context);
                       },
                       child: Container(
                         width: size.width * 0.8,
@@ -162,20 +175,7 @@ class _LoginRouteState extends State<LoginRoute>
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: MaterialButton(
-                          onPressed: () {
-                            debugPrint('************login onTap*******');
-                            if (username == "" ||
-                                password == "" ||
-                                username == null ||
-                                password == null) {
-                              print('invalid input value');
-                              return;
-                            }
-                            loginAccount(
-                                username: username!,
-                                password: password!,
-                                context: context);
-                          },
+                          onPressed: () {},
                           child: Text(
                             'Login',
                             style: TextStyle(
@@ -203,7 +203,7 @@ class _LoginRouteState extends State<LoginRoute>
                   ElevatedButton.icon(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
+                      MaterialStateProperty.all<Color>(Colors.white),
                     ),
                     icon: Icon(Icons.school_outlined, color: Colors.black),
                     label: Text(
@@ -222,7 +222,7 @@ class _LoginRouteState extends State<LoginRoute>
                   ElevatedButton.icon(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
+                      MaterialStateProperty.all<Color>(Colors.white),
                     ),
                     icon: Icon(Icons.phone_outlined, color: Colors.black),
                     label: Text(
@@ -283,8 +283,8 @@ class _LoginRouteState extends State<LoginRoute>
 
   void loginAccount(
       {required String username,
-      required String password,
-      required BuildContext context}) async {
+        required String password,
+        required BuildContext context}) async {
     print('loginAccount is called with username $username, password $password');
 
     Scaffold.of(context).showSnackBar(SnackBar(
@@ -319,10 +319,10 @@ class CustomCardShapePainter extends CustomPainter {
     Paint paint = Paint();
     paint.shader =
         ui.Gradient.linear(Offset(0, size.height), Offset(size.width, 0), [
-      //HSLColor.fromColor(startColor).withLightness(0.8).toColor(),
-      startColor,
-      endColor
-    ]);
+          //HSLColor.fromColor(startColor).withLightness(0.8).toColor(),
+          startColor,
+          endColor
+        ]);
 
     final double w = size.width;
     final double h = size.height;
@@ -351,14 +351,13 @@ class CustomCardShapePainter extends CustomPainter {
       ..quadraticBezierTo(pointFiveX, pointFiveY, pointSixX, pointSixY)
       ..lineTo(size.width, 0)
       ..lineTo(0, 0)
-      /*
+    /*
       ..lineTo(size.width - radius, size.height)
       ..quadraticBezierTo(size.width, size.height, size.width, size.height - radius)
       ..lineTo(size.width, radius)
       ..quadraticBezierTo(size.width, 0, size.width - radius, 0)
       ..lineTo(size.width - 1.5 * radius, 0)
       ..quadraticBezierTo(-radius, 2 * radius, 0, size.height)
-
        */
       ..close();
 

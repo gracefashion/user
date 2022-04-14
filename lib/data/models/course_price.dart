@@ -12,10 +12,10 @@ class CoursePrice {
   final bool isSelected;
   CoursePrice(
       {required this.id,
-      required this.courseName,
-      required this.coursePrice,
-      required this.dateTime,
-      required this.isSelected});
+        required this.courseName,
+        required this.coursePrice,
+        required this.dateTime,
+        required this.isSelected});
 
   factory CoursePrice.fromJson(Map<String, dynamic> json) =>
       _$CoursePriceFromJson(json);
