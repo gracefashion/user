@@ -9,7 +9,7 @@ final String appName = "A 1 Online Learning Center";
 final String backendApiServer = 'http://15.237.152.15:8000';
 final String apiVersion = backendApiServer + '';
 final String loginEndpoint = apiVersion + '/api/token/';
-final String courseEndpoint = apiVersion + '/courses/';
+final String courseEndpoint = apiVersion + '/courses/?limit=100';
 final String subscriptionEndpoint = apiVersion + '/subscriptions/';
 
 final String appIconAsset = "assets/images/appicon.png";

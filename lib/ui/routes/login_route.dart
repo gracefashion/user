@@ -165,7 +165,7 @@ class _LoginRouteState extends State<LoginRoute>
                             context: context);
                       },
                       child: Container(
-                        width: size.width * 0.8,
+                        width: size.width * 0.3,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                               begin: Alignment.topLeft,
@@ -174,20 +174,23 @@ class _LoginRouteState extends State<LoginRoute>
                           border: Border.all(color: Colors.black),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: MaterialButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Login',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 15, bottom: 15),
+                          child: Center(
+                            child: Text(
+                                'Login',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                           ),
+                        ),
                         ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
 

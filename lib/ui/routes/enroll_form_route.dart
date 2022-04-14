@@ -104,7 +104,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                                   style: courseLabel,
                                 ),
                                 subtitle: Text(
-                                  "သင်တန်းကြေး: ${list[index].coursePrice}ကျပ်",
+                                  "သင်တန်းကြေး: ${list[index].coursePrice} ကျပ်",
                                 ),
                               )),
                         );
@@ -117,7 +117,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                 Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
-                      "စုစုပေါင်း: ${controller.totalPrice.value}ကျပ်",
+                      "စုစုပေါင်း: ${controller.totalPrice.value} ကျပ်",
                     )),
                 const SizedBox(height: 30),
                 //Payment Options
