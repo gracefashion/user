@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:kzn/data/fcm_key.dart';
+// import 'package:kzn/data/fcm_key.dart';
 
 Future<void> sendPush(String title, String message) async {
   //final token = await FirebaseMessaging.instance.getToken();
@@ -17,7 +17,7 @@ Future<void> sendPush(String title, String message) async {
   await Dio().post("https://fcm.googleapis.com/fcm/send",
       data: jsonBody,
       options: Options(headers: {
-        "Authorization": "key=$fcmKey",
+        // "Authorization": "key=$fcmKey",
         "Content-Type": "application/json"
       })
   );
