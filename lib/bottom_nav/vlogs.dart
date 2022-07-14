@@ -136,7 +136,7 @@ class _VlogState extends State<Vlog> {
           AutoOrientation.landscapeAutoMode();
         },
         initialUrlRequest:
-            URLRequest(url: Uri.parse("https://a1onlinelearning.com/vlog")),
+            URLRequest(url: Uri.parse("https://gracefashionanddesignschool.com/video-vlog")),
         initialOptions: options,
         onWebViewCreated: (controller) {
           webViewController = controller;

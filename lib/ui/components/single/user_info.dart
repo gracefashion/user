@@ -14,17 +14,24 @@ class _UserInfoState extends State<UserInfo> {
     return Container(
       child: (Provider.of<UserProvider>(context, listen: true).user == null) ?
         Container(
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.black,
-            ),
-            child: Text("Login",style: TextStyle(color: Colors.white)),
-            onPressed: (){
-              Navigator.pushReplacementNamed(context, LoginRoute.routeName);
-            },
-            
-
+          child: Image.asset(
+            'assets/images/appicon.png',
+            height: 100,
           ),
+
+
+
+          // ElevatedButton(
+          //   style: ElevatedButton.styleFrom(
+          //     primary: Colors.pinkAccent,
+          //   ),
+          //   child: Text("Login",style: TextStyle(color: Colors.white)),
+          //   onPressed: (){
+          //     Navigator.pushReplacementNamed(context, LoginRoute.routeName);
+          //   },
+          //
+          //
+          // ),
         ) :
         Column(
           children: [
@@ -37,8 +44,10 @@ class _UserInfoState extends State<UserInfo> {
           new Container(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text(""+Provider.of<UserProvider>(context, listen: true).user!.username
-              ),
+              child: Text(""+Provider.of<UserProvider>(context, listen: true).user!.username,
+              style: TextStyle(
+                color: Colors.pinkAccent
+              ),),
             ),
           ),
           ],

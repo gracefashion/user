@@ -34,13 +34,15 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.pinkAccent),
         backgroundColor: Colors.white,
-        title: Text("သင်တန်းအပ်ရန်",
+        title: Text("Student Enrollment",
             style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 16.0,
-                color: Colors.black)),
+                letterSpacing: 2,
+                wordSpacing: 2,
+                color: Colors.pinkAccent)),
       ),
       body: Obx(() => controller.coursePriceList.isNotEmpty
           ? Padding(
@@ -128,6 +130,53 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                     Column(
                       children: [
                         Image.asset(
+                          "assets/images/kbz.png",
+                          width: 112,
+                          height: 63,
+                        ),
+                        SizedBox(height: 5),
+                      ],
+                    ),
+                    SizedBox(width: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          " Daw Thaw Mi Aung",
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            primary: Colors.black,
+                            textStyle: const TextStyle(fontSize: 16),
+                          ),
+                          onPressed: () {
+                            Clipboard.setData(new ClipboardData(
+                                text: "02930102903306101"))
+                                .then((_) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text(
+                                          "KBZ Account နံပါတ် 029 301 0290 3306 101 ကို Copy ကူး လိုက်ပါပြီ")));
+                            });
+                          },
+                          child: const Text('029 301 0290 3306 101'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      children: [
+                        Image.asset(
                           "assets/images/kpay.png",
                           width: 112,
                           height: 63,
@@ -141,7 +190,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          " Yadanar Aung (KBZ Pay)",
+                          " Daw Thaw Mi Aung",
                           style: TextStyle(
                             fontSize: 16,
                           ),
@@ -153,15 +202,15 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                           ),
                           onPressed: () {
                             Clipboard.setData(new ClipboardData(
-                                text: "09968610865"))
+                                text: "09969545215"))
                                 .then((_) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                       content: Text(
-                                          "KBZ Pay Account နံပါတ် 099 686 108 65 ကို Copy ကူး လိုက်ပါပြီ")));
+                                          "KBZ Pay Account နံပါတ် 09 969 5452 15 ကို Copy ကူး လိုက်ပါပြီ")));
                             });
                           },
-                          child: const Text('099 686 108 65'),
+                          child: const Text('09 969 5452 15'),
                         ),
                       ],
                     ),
@@ -187,7 +236,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          " 09269303500 (Wave Pay)",
+                          " 09 969 5452 15",
                           style: TextStyle(
                             fontSize: 16,
                           ),
@@ -199,16 +248,16 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                           ),
                           onPressed: () {
                             Clipboard.setData(new ClipboardData(
-                                text: "09269303500"))
+                                text: "09969545215"))
                                 .then((_) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                       content: Text(
-                                          "Wave Account နံပါတ် 09 269 3035 00 ကို Copy ကူး လိုက်ပါပြီ")));
+                                          "Wave Account နံပါတ် 09 969 5452 15 ကို Copy ကူး လိုက်ပါပြီ")));
                             });
                           },
                           child: const Text(
-                            'Password - 303500 ထားပေးပါ',
+                            'Password မလိုပါ',
                             style: TextStyle(fontSize: 15),
                           ),
                         ),
@@ -236,7 +285,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          " Yadanar Aung (AYA Bank)",
+                          " Daw Thaw Mi Aung",
                           style: TextStyle(
                             fontSize: 16,
                           ),
@@ -248,15 +297,15 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                           ),
                           onPressed: () {
                             Clipboard.setData(new ClipboardData(
-                                text: "20009228825"))
+                                text: "0241222010005635"))
                                 .then((_) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                       content: Text(
-                                          "AYA Bank Account နံပါတ် 200 09 2288 25 ကို Copy ကူး လိုက်ပါပြီ")));
+                                          "AYA Bank Account နံပါတ် 0241 2220 1000 5635 ကို Copy ကူး လိုက်ပါပြီ")));
                             });
                           },
-                          child: const Text('200 09 2288 25'),
+                          child: const Text('0241 2220 1000 5635'),
                         ),
                       ],
                     ),
@@ -283,7 +332,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          " Yadanar Aung (CB Bank)",
+                          " Daw Thaw Mi Aung",
                           style: TextStyle(
                             fontSize: 16,
                           ),
@@ -295,15 +344,15 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                           ),
                           onPressed: () {
                             Clipboard.setData(new ClipboardData(
-                                text: "0010600100428507"))
+                                text: "2009600100007625"))
                                 .then((_) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                       content: Text(
-                                          "CB Bank Account နံပါတ် 0010 6001 0042 8507 ကို Copy ကူး လိုက်ပါပြီ")));
+                                          "CB Bank Account နံပါတ် 2009 6001 0000 7625 ကို Copy ကူး လိုက်ပါပြီ")));
                             });
                           },
-                          child: const Text('0010 6001 0042 8507'),
+                          child: const Text('2009 6001 0000 7625'),
                         ),
                       ],
                     ),
@@ -416,7 +465,7 @@ class _EnrollFormRouteState extends State<EnrollFormRoute> {
                   width: size.width,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
+                      primary: Colors.pinkAccent,
                     ),
                     onPressed: () => controller.isUploading.value
                         ? null

@@ -1,4 +1,4 @@
-package com.kzn.a1onlinelearning;
+package com.kzn.grace;
 
 import io.flutter.embedding.android.FlutterActivity;
 

@@ -17,11 +17,11 @@ class _SubscriptionRouteState extends State<SubscriptionRoute> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.pinkAccent),
         backgroundColor: Colors.white,
         title: Text("သင်တန်းအပ်ရန်", style: TextStyle(fontWeight: FontWeight.w700,
             fontSize: 16.0,
-            color: Colors.black
+            color: Colors.pinkAccent
         )),),
       body:
       Column(
@@ -50,13 +50,13 @@ class _SubscriptionRouteState extends State<SubscriptionRoute> {
                       backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.white),
                     ),
-                    icon: Icon(Icons.school_outlined, color: Colors.black),
+                    icon: Icon(Icons.school_outlined, color: Colors.pinkAccent),
                     label: Text(
                       'Enroll Now',
                       style: const TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                          color: Colors.pinkAccent),
                     ),
                     onPressed: () {
                       Get.toNamed(EnrollFormRoute.routeName);
@@ -69,15 +69,15 @@ class _SubscriptionRouteState extends State<SubscriptionRoute> {
                       backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.white),
                     ),
-                    icon: Icon(Icons.phone_outlined, color: Colors.black),
+                    icon: Icon(Icons.phone_outlined, color: Colors.pinkAccent),
                     label: Text(
                       'Contact Us',
                       style: const TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                          color: Colors.pinkAccent),
                     ),
-                    onPressed: () => launch("tel://09269303500"),
+                    onPressed: () => launch("tel://09969545215"),
                   ),
                 ],
               ),

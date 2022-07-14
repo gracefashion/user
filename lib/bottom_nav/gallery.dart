@@ -12,17 +12,8 @@ class _GalleryState extends State<Gallery> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(
-        //     iconTheme: IconThemeData(color: Colors.black),
-        //     backgroundColor: Colors.white,
-        //     title: Center(
-        //       child: Text("His's and Her's Gallery", style: TextStyle(fontSize: 16.0,
-        //           color: Colors.black
-        //       )),
-        //     ),
-        // ),
         body: const WebView(
-          initialUrl: 'https://a1onlinelearning.com/gallery',
+          initialUrl: 'https://gracefashionanddesignschool.com/gallery',
           javascriptMode: JavascriptMode.unrestricted,
         ),
       ),

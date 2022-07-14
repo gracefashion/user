@@ -13,11 +13,11 @@ class _TnCRouteState extends State<TnCRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.pinkAccent),
         backgroundColor: Colors.white,
         title: Text("Terms & Conditions", style: TextStyle(fontWeight: FontWeight.w700,
             fontSize: 16.0,
-            color: Colors.black
+            color: Colors.pinkAccent
         )),),
       body: Padding(
         padding: const EdgeInsets.only(top: 20, left: 8, right: 8),

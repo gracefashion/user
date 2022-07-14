@@ -26,10 +26,10 @@ class _PostState extends State<Post> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.pinkAccent),
         backgroundColor: Colors.white,
         title: Text(widget.title, style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold,
-        color: Colors.black),),
+        color: Colors.pinkAccent),),
       ),
 
       body: SingleChildScrollView(

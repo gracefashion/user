@@ -47,44 +47,17 @@ class _MainRouteState extends State<MainRoute> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: IconThemeData(color: Colors.pinkAccent),
             backgroundColor: Colors.white,
-            title: Text("A 1 Online Learning Center",
-
-                style: TextStyle(fontSize: 16.0, color: Colors.black,
+            title: Text("Grace Fashion & Design School",
+                style: TextStyle(fontSize: 15, color: Colors.pinkAccent,
                   letterSpacing: 1,
-                  wordSpacing: 2,
+                  wordSpacing: 1,
                 )),
             actions: [
-              // SizedBox(
-              //   width: 50,
-              //   child: ElevatedButton(
-              //     style: ButtonStyle(
-              //       alignment: Alignment.center,
-              //       backgroundColor: MaterialStateProperty.all(Colors.white),
-              //       elevation: MaterialStateProperty.resolveWith<double>(
-              //         // As you said you dont need elevation. I'm returning 0 in both case
-              //             (Set<MaterialState> states) {
-              //           if (states.contains(MaterialState.disabled)) {
-              //             return 0;
-              //           }
-              //           return 0; // Defer to the widget's default.
-              //         },
-              //       ),
-              //     ),
-              //     onPressed: () {
-              //       OpenFacebook.open(fbProtocolUrl, fallbackUrl);
-              //     },
-              //     child: FaIcon(
-              //       FontAwesomeIcons.facebookSquare,
-              //       color: Colors.indigo,
-              //       size: 30,
-              //     ),
-              //   ),
-              // ),
-
 
               SizedBox(
+                width: 50,
                 child: ElevatedButton(
                   style: ButtonStyle(
                     alignment: Alignment.center,
@@ -101,7 +74,7 @@ class _MainRouteState extends State<MainRoute> {
                   ),
                   onPressed: () async {
                     try {
-                      await launch('https://m.me/102832035634505');
+                      await launch('https://m.me/Gracefashionschool');
                     } catch (e) {
                       print(e);
                     }
@@ -138,7 +111,27 @@ class _MainRouteState extends State<MainRoute> {
           if (snapshot.hasData) {
             if (snapshot.data!.length == 0) {
               return Container(
-                child: Center(child: Text('no course')),
+                child: Center(child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+
+                      Image.asset(
+                        'assets/images/q.png',
+                        width: 600.0,
+                        height: 240.0,
+                        fit: BoxFit.fitHeight,
+                      ),
+
+                      Image.asset(
+                        'assets/images/qq.jpg',
+                        width: 600.0,
+                        height: 240.0,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ],
+                  ),
+                ),),
               );
             } else {
               return CourseList(courses: snapshot.data!);
@@ -151,7 +144,7 @@ class _MainRouteState extends State<MainRoute> {
           } else {
             //_refreshController.refreshCompleted();
             return Container(
-              child: Center(child: Text('loading courses...')),
+              child: Center(child: Text('Grace Fashion & Design School')),
             );
           }
         });

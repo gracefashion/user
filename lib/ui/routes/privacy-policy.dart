@@ -13,21 +13,21 @@ class _PrivacyPolicyRouteState extends State<PrivacyPolicyRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.pinkAccent),
         backgroundColor: Colors.white,
         title: Text("Privacy Policy", style: TextStyle(fontWeight: FontWeight.w700,
             fontSize: 16.0,
-            color: Colors.black
+            color: Colors.pinkAccent
         )),),
       body: Padding(
         padding: const EdgeInsets.only(top: 20, left: 8, right: 8),
         child: SingleChildScrollView(child: Text(
           '''
-          A 1 Fashion Design School values the privacy of every person and is committed to protecting information that schools collect.
+          Grace Fashion & Design School values the privacy of every person and is committed to protecting information that schools collect.
 
-School's all staff must comply with A 1 Fashion Design School privacy law and policy.
+School's all staff must comply with Grace Fashion & Design School privacy law and policy.
 
-This policy explains how our school collects and manages personal information, consistent with A 1 Fashion Design School law.'''
+This policy explains how our school collects and manages personal information, consistent with Grace Fashion & Design School law.'''
         )),
       ),
 

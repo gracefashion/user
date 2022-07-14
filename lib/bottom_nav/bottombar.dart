@@ -46,13 +46,14 @@ class _BottomBarState extends State<BottomBar> {
       body: _widgetOption.elementAt(_currentindex),
       bottomNavigationBar: BottomNavigationBar(
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.article), label: 'Blog'),
-          BottomNavigationBarItem(icon: Icon(Icons.video_label_rounded), label: 'Vlog'),
-          BottomNavigationBarItem(icon: Icon(Icons.school), label: 'Courses'),
-          BottomNavigationBarItem(icon: Icon(Icons.image), label: 'Album'),
-          BottomNavigationBarItem(label: 'Coming Classes',
+          BottomNavigationBarItem(icon: Icon(Icons.article,color: Colors.pinkAccent,
+          ), label: 'Blog'),
+          BottomNavigationBarItem(icon: Icon(Icons.video_label_rounded,color: Colors.pinkAccent,), label: 'Vlog'),
+          BottomNavigationBarItem(icon: Icon(Icons.school,color: Colors.pinkAccent,), label: 'Learning'),
+          BottomNavigationBarItem(icon: Icon(Icons.image,color: Colors.pinkAccent,), label: 'Album'),
+          BottomNavigationBarItem(label: 'New Info',
           icon: Stack(children: <Widget>[
-          Icon(Icons.doorbell),
+          Icon(Icons.doorbell,color: Colors.pinkAccent,),
             new Positioned(
                 right: 0,
                 child: new Container(

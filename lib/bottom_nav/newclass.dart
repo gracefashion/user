@@ -8,11 +8,11 @@
  import 'package:kzn/providers/blog_provider.dart';
  import 'package:provider/provider.dart';
 
- String url ='https:a1onlinelearning.com';
+ String url ='https://gracefashionanddesignschool.com';
 
  Future fetchWpPosts() async {
    final response = await http.get(Uri.parse(
-     "https:a1onlinelearning.com/index.php/wp-json/wp/v2/posts?_embed&per_page=100&categories=2&orderby=date&status=publish",
+     "https://gracefashionanddesignschool.com/index.php/wp-json/wp/v2/posts?_embed&per_page=100&categories=57&orderby=date&status=publish",
    ));
 
    var covetedDatatoJson = jsonDecode(response.body);
@@ -39,12 +39,12 @@
      return Scaffold(
        appBar: AppBar(
          elevation: 2,
-         iconTheme: const IconThemeData(color: Colors.indigo),
+         iconTheme: const IconThemeData(color: Colors.pinkAccent),
          backgroundColor: Colors.white,
          title: Center(
-           child: Text("A 1 New Coming Classes", style: TextStyle(fontWeight: FontWeight.w700,
+           child: Text("Grace Fashion New Info", style: TextStyle(fontWeight: FontWeight.w700,
                fontSize: 16.0,
-               color: Colors.black,
+               color: Colors.pinkAccent,
              letterSpacing: 1,
              wordSpacing: 1,
            )),
@@ -81,10 +81,8 @@
 
  class PostTile extends StatefulWidget {
    const PostTile({Key? key,required this.href,
-   required this.title,
-   required this.desc,
-   required this.content,
-   required this.imageUrl}) : super(key: key);
+     required this.title,required this.desc,
+     required this.content,required this.imageUrl}) : super(key: key);
 
    final String href, title, desc, content, imageUrl;
 
@@ -93,7 +91,7 @@
  }
 
  class _PostTileState extends State<PostTile> {
-   var imageUrl = "";
+   //var imageUrl = "";
    Widget shortDescritionView (){
      return Html(
        data: widget.desc,
@@ -112,12 +110,14 @@
        },
        child: Card(
          elevation: 1,
-         
+         // height: 150,
+         margin: EdgeInsets.only(top: 8),
+         // padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+           // crossAxisAlignment: CrossAxisAlignment.start,
            children: [
              Padding(
-               padding: const EdgeInsets.all(10),
+               padding: const EdgeInsets.all(8.0),
                child: Hero(
                  tag: widget.imageUrl,
                  child: ClipRRect(
@@ -135,16 +135,16 @@
              SizedBox(width: 8),
 
              Expanded(child:
-             Padding(
-               padding: const EdgeInsets.only(top: 20),
-               child: Column(
-                 children: [
-                   Text(widget.title,
+             Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               children: [Padding(
+                 padding: const EdgeInsets.only(left: 8),
+                 child: Text(widget.title,
                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)
                  ),
-                   shortDescritionView(),
-                 ],),
-             )),
+               ),
+                 shortDescritionView(),
+               ],)),
              SizedBox(width: 5),
 
            ],

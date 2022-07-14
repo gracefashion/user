@@ -15,7 +15,7 @@ class EnrollController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
-  var paymentAccValue = "09968610865 (KBZ Pay)".obs;
+  var paymentAccValue = "09 969 5452 15 (KBZ Pay)".obs;
   var bankSs = "".obs;
   var facebookProfileSs = "".obs;
   var isUploading = false.obs;

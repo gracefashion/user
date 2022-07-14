@@ -8,11 +8,11 @@ import 'dart:convert';
 import 'package:kzn/providers/blog_provider.dart';
 import 'package:provider/provider.dart';
 
-String url ='https://a1onlinelearning.com';
+String url ='https://gracefashionanddesignschool.com';
 
 Future fetchWpPosts() async {
   final response = await http.get(Uri.parse(
-    "https://a1onlinelearning.com/index.php/wp-json/wp/v2/posts?_embed&per_page=100&categories=4&orderby=date&status=publish",
+    "https://gracefashionanddesignschool.com/index.php/wp-json/wp/v2/posts?_embed&per_page=100&categories=56&orderby=date&status=publish",
     // headers: {"Accept: application/json"}
   ));
 
@@ -41,12 +41,12 @@ class _BlogState extends State<Blog> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 3,
-        iconTheme: const IconThemeData(color: Colors.indigo),
+        iconTheme: const IconThemeData(color: Colors.pinkAccent),
         backgroundColor: Colors.white,
         title: Center(
-          child: Text("A 1 Fashion Knowledge Blog", style: TextStyle(fontWeight: FontWeight.w700,
+          child: Text("Grace Fashion Knowledge Blog", style: TextStyle(fontWeight: FontWeight.w700,
               fontSize: 16.0,
-              color: Colors.black,
+            color: Colors.pinkAccent,
             letterSpacing: 1,
             wordSpacing: 2,
           )),
@@ -139,8 +139,11 @@ class _PostTileState extends State<PostTile> {
             Expanded(child:
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text(widget.title,
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)
+              children: [Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: Text(widget.title,
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)
+                ),
               ),
                 shortDescritionView(),
               ],)),

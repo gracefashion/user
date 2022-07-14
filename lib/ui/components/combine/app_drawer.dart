@@ -35,8 +35,8 @@ class AppDrawer extends StatelessWidget {
           Container(
             margin: EdgeInsets.all(8),
             child: ListTile(
-              leading: Icon(Icons.privacy_tip, color: Colors.black,),
-              title: Text('Privacy Policy', style: TextStyle(color: Colors.black)),
+              leading: Icon(Icons.privacy_tip, color: Colors.pinkAccent,),
+              title: Text('Privacy Policy', style: TextStyle(color: Colors.pinkAccent)),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -50,8 +50,8 @@ class AppDrawer extends StatelessWidget {
           Container(
             margin: EdgeInsets.all(8),
             child: ListTile(
-              leading: Icon(Icons.book, color: Colors.black),
-              title: Text('Terms of Conditions', style: TextStyle(color: Colors.black)),
+              leading: Icon(Icons.book, color: Colors.pinkAccent),
+              title: Text('Terms of Conditions', style: TextStyle(color: Colors.pinkAccent)),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -64,8 +64,8 @@ class AppDrawer extends StatelessWidget {
           Container(
             margin: EdgeInsets.all(8),
             child: ListTile(
-              leading: Icon(Icons.article, color: Colors.black),
-              title: Text('About', style: TextStyle(color: Colors.black),),
+              leading: Icon(Icons.article, color: Colors.pinkAccent),
+              title: Text('About', style: TextStyle(color: Colors.pinkAccent),),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -76,16 +76,16 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
 
-          Container(
-            margin: EdgeInsets.all(8),
-            child: ListTile(
-              leading: Icon(Icons.facebook, color: Colors.blue),
-              title: Text('A 1 Facebook Page', style: TextStyle(color: Colors.black)),
-              onTap: () {
-                OpenFacebook.open(fbProtocolUrl, fallbackUrl);
-              },
-            ),
-          ),
+          // Container(
+          //   margin: EdgeInsets.all(8),
+          //   child: ListTile(
+          //     leading: Icon(Icons.facebook, color: Colors.blue),
+          //     title: Text('Grace Facebook Page', style: TextStyle(color: Colors.pinkAccent)),
+          //     onTap: () {
+          //       OpenFacebook.open(fbProtocolUrl, fallbackUrl);
+          //     },
+          //   ),
+          // ),
         ],
       ),
     );

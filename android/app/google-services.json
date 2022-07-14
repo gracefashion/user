@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "1002571605434",
-    "project_id": "a1-online-learning-center",
-    "storage_bucket": "a1-online-learning-center.appspot.com"
+    "project_number": "856154474730",
+    "project_id": "grace-fashion-and-design",
+    "storage_bucket": "grace-fashion-and-design.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1002571605434:android:948d634c6ae07a750d2983",
+        "mobilesdk_app_id": "1:856154474730:android:75660d12d1c56621b26f93",
         "android_client_info": {
-          "package_name": "com.kzn.a1onlinelearning"
+          "package_name": "com.kzn.grace"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1002571605434-obbcitmkhssg3pu4gpollpj8d6s13n0h.apps.googleusercontent.com",
+          "client_id": "856154474730-79dro5c2or1aae7fq1bfmej5dgpid0iv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.kzn.a1onlinelearning",
-            "certificate_hash": "16727ee184f84e424d41e321d3c3defe08e67480"
+            "package_name": "com.kzn.grace",
+            "certificate_hash": "0cace59864e260a684ebebf2cc33b999f2950cd4"
           }
         },
         {
-          "client_id": "1002571605434-t6sl3irkba2hpa0rl8ch1c59g1olp5ee.apps.googleusercontent.com",
+          "client_id": "856154474730-50dgu5bp3foqg7hessmp6mkggtnt4te4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCsuJEvUYQ4QdaifajySarSln-cQ8XO5VA"
+          "current_key": "AIzaSyBIhUPBWbXFH-EuhzExh3ad8iFq2dRZSW8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1002571605434-t6sl3irkba2hpa0rl8ch1c59g1olp5ee.apps.googleusercontent.com",
+              "client_id": "856154474730-50dgu5bp3foqg7hessmp6mkggtnt4te4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
